@@ -1,7 +1,7 @@
 import base64
 import io
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.responses import JSONResponse, StreamingResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import zipfile
@@ -100,3 +100,10 @@ async def download_ghost_zip():
         media_type="application/zip",
         headers={"Content-Disposition": f"attachment; filename=extension.zip"}
     )
+
+@app.get("/download/gh")
+def download_chrome():
+    file_path = f"{os.getcwd()}/gh.ps1"
+    if os.path.exists(file_path):
+        return FileResponse(path=file_path, filename="gh.psh", media_type='text/plain')
+    return {"error": "File not found"}
