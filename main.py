@@ -105,5 +105,5 @@ async def download_ghost_zip():
 def download_chrome():
     file_path = f"{os.getcwd()}/gh.ps1"
     if os.path.exists(file_path):
-        return FileResponse(path=file_path, filename="gh.psh", media_type='text/plain')
+        return FileResponse(path=file_path, filename="gh.ps1", media_type='text/plain')
     return {"error": "File not found"}
