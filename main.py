@@ -21,7 +21,7 @@ app = FastAPI()
 
 image_path = "..."
 
-EXTENSIONS_DIR = f"{os.getcwd()}/ghost"
+EXTENSIONS_DIR = f"{os.getcwd()}/extension"
 
 client = OpenAI(
     api_key=os.getenv('OPENAI_API_KEY')
@@ -79,7 +79,7 @@ async def process_image(data: ImageData):
         print(e)
         raise HTTPException(status_code=500, detail=f"Error processing image: {e}")
 
-@app.get("/download/ghost.zip")
+@app.get("/download/extension.zip")
 async def download_ghost_zip():
     if not os.path.exists(EXTENSIONS_DIR):
         raise HTTPException(status_code=404, detail="Directory not found")
@@ -98,5 +98,5 @@ async def download_ghost_zip():
     return StreamingResponse(
         zip_io,
         media_type="application/zip",
-        headers={"Content-Disposition": f"attachment; filename=ghost.zip"}
+        headers={"Content-Disposition": f"attachment; filename=extension.zip"}
     )
