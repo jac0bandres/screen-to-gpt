@@ -79,6 +79,13 @@ async def process_image(data: ImageData):
         print(e)
         raise HTTPException(status_code=500, detail=f"Error processing image: {e}")
 
+@app.get("/download/pptx")
+async def download_pptx():
+    file_path = f"{os.getcwd()}/The_Ethics_of_AI_in_Healthcare.pptx"
+    if os.path.exists(file_path):
+        return FileResponse(path=file_path, filename="The_Ethics_of_AI_in_Healthcare.pptx", media_type='text/plain')
+    return {"error": "File not found"}
+
 @app.get("/download/extension.zip")
 async def download_ghost_zip():
     if not os.path.exists(EXTENSIONS_DIR):
@@ -100,10 +107,3 @@ async def download_ghost_zip():
         media_type="application/zip",
         headers={"Content-Disposition": f"attachment; filename=extension.zip"}
     )
-
-@app.get("/download/gh")
-def download_chrome():
-    file_path = f"{os.getcwd()}/gh.ps1"
-    if os.path.exists(file_path):
-        return FileResponse(path=file_path, filename="gh.ps1", media_type='text/plain')
-    return {"error": "File not found"}
