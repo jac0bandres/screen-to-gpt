@@ -59,7 +59,7 @@ async def process_image(data: ImageData):
                 {
                     "role": "user",
                     "content": [
-                        {"type": "text", "text": "Solve the math problem in the screenshot. If it is multiple choice, list the correct answers at the end as A, B, etc. If it a drag and drop, list as 1 (contents), 2 (contents), 3 (contents), etc.."},
+                        {"type": "text", "text": "There is a Computer Ethics question in the screenshot. If it is multiple choice, list the correct answers at the end as A, B, etc..."},
                         {"type": "image_url", "image_url": {
                             "url": f"data:image/png;base64,{match.group(1)}"
                         }},
