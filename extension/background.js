@@ -53,7 +53,7 @@ function injectDiv(answer) {
     div.style.top = "0";
     div.style.left = "33%";
     div.style.background = "transparent";
-    div.style.color = "#000000" //#f9f1f1"
+    div.style.color = "#f9f1f1"
     div.style.padding = "20px";
     div.style.border =  "none";
     div.style.zIndex = "9999";
