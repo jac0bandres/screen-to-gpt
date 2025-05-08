@@ -61,9 +61,16 @@ function injectDiv(answer) {
     div.style.maxHeight = "100px";
     div.style.height = "100px";
     div.style.overflowY = "auto";
+    div.style.msOverflowStyle = "none";
+    div.style.scrollebarWidth = "none";
+    div.style.cssText += `
+    &::-webkit-scrollbar {
+      display: none;
+      }
+      `;
+    }
     div.innerText = answer
-  }
-
+    
   if (!document.body.contains(div)) {
     document.body.appendChild(div);
   } else {
