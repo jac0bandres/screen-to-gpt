@@ -1,1 +1,1 @@
-# ghost-test-taker
+# screen-to-gpt
